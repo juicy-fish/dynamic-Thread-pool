@@ -27,6 +27,11 @@ public class RedisRegistry implements IRegistry {
     @Override
     public void reportThreadPool(List<ThreadPoolConfigEntity> threadPoolEntities) {
         RList<ThreadPoolConfigEntity> list = redissonClient.getList(RegistryEnumVO.THREAD_POOL_CONFIG_LIST_KEY.getKey());
+        /**
+         * 每次上报的都是完整的线程池配置列表
+         * 不是增量更新，而是用新数据完全替换旧数据
+         * 确保 Redis 中的列表与 threadPoolEntities 参数完全一致
+         */
         list.delete();
         list.addAll(threadPoolEntities);
     }
