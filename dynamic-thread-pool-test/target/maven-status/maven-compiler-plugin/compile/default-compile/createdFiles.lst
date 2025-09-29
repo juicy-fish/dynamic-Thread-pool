@@ -1,0 +1,4 @@
+com\tc\config\ThreadPoolConfig.class
+com\tc\config\ThreadPoolConfigProperties.class
+com\tc\Application.class
+META-INF\spring-configuration-metadata.json

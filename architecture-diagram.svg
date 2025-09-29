@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .title { font-family: Arial, sans-serif; font-size: 24px; font-weight: bold; fill: #2c3e50; }
+      .layer-title { font-family: Arial, sans-serif; font-size: 18px; font-weight: bold; fill: #34495e; }
+      .component-title { font-family: Arial, sans-serif; font-size: 14px; font-weight: bold; fill: #2c3e50; }
+      .component-text { font-family: Arial, sans-serif; font-size: 12px; fill: #34495e; }
+      .layer-bg { fill: #ecf0f1; stroke: #bdc3c7; stroke-width: 2; }
+      .component-bg { fill: #ffffff; stroke: #3498db; stroke-width: 2; }
+      .admin-bg { fill: #e8f5e8; stroke: #27ae60; stroke-width: 2; }
+      .starter-bg { fill: #fff3cd; stroke: #f39c12; stroke-width: 2; }
+      .test-bg { fill: #f8d7da; stroke: #e74c3c; stroke-width: 2; }
+      .redis-bg { fill: #d1ecf1; stroke: #17a2b8; stroke-width: 2; }
+      .arrow { stroke: #7f8c8d; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+      .data-flow { stroke: #e74c3c; stroke-width: 2; fill: none; marker-end: url(#arrowhead); stroke-dasharray: 5,5; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#7f8c8d" />
+    </marker>
+  </defs>
+  
+  <!-- 标题 -->
+  <text x="600" y="30" text-anchor="middle" class="title">动态线程池架构图</text>
+  
+  <!-- 管理后台层 -->
+  <rect x="50" y="60" width="300" height="180" class="layer-bg admin-bg" rx="10"/>
+  <text x="200" y="85" text-anchor="middle" class="layer-title">管理后台 (Admin)</text>
+  
+  <!-- Web管理界面 -->
+  <rect x="70" y="100" width="120" height="60" class="component-bg" rx="5"/>
+  <text x="130" y="120" text-anchor="middle" class="component-title">Web管理界面</text>
+  <text x="130" y="135" text-anchor="middle" class="component-text">index.html</text>
+  <text x="130" y="150" text-anchor="middle" class="component-text">线程池监控</text>
+  
+  <!-- 控制器 -->
+  <rect x="210" y="100" width="120" height="60" class="component-bg" rx="5"/>
+  <text x="270" y="120" text-anchor="middle" class="component-title">REST API</text>
+  <text x="270" y="135" text-anchor="middle" class="component-text">Controller</text>
+  <text x="270" y="150" text-anchor="middle" class="component-text">配置管理</text>
+  
+  <!-- Redis配置 -->
+  <rect x="70" y="170" width="260" height="50" class="component-bg" rx="5"/>
+  <text x="200" y="190" text-anchor="middle" class="component-title">Redis配置管理</text>
+  <text x="200" y="205" text-anchor="middle" class="component-text">RedissonClient / 配置存储</text>
+  
+  <!-- Spring Boot Starter层 -->
+  <rect x="400" y="60" width="350" height="300" class="layer-bg starter-bg" rx="10"/>
+  <text x="575" y="85" text-anchor="middle" class="layer-title">动态线程池 Spring Boot Starter</text>
+  
+  <!-- 自动配置 -->
+  <rect x="420" y="100" width="150" height="60" class="component-bg" rx="5"/>
+  <text x="495" y="120" text-anchor="middle" class="component-title">自动配置</text>
+  <text x="495" y="135" text-anchor="middle" class="component-text">AutoConfig</text>
+  <text x="495" y="150" text-anchor="middle" class="component-text">Bean注册</text>
+  
+  <!-- 配置属性 -->
+  <rect x="580" y="100" width="150" height="60" class="component-bg" rx="5"/>
+  <text x="655" y="120" text-anchor="middle" class="component-title">配置属性</text>
+  <text x="655" y="135" text-anchor="middle" class="component-text">Properties</text>
+  <text x="655" y="150" text-anchor="middle" class="component-text">Redis连接配置</text>
+  
+  <!-- 核心服务层 -->
+  <rect x="420" y="170" width="310" height="80" class="component-bg" rx="5"/>
+  <text x="575" y="190" text-anchor="middle" class="component-title">核心服务层 (Domain)</text>
+  <text x="450" y="210" text-anchor="start" class="component-text">• DynamicThreadPoolService</text>
+  <text x="450" y="225" text-anchor="start" class="component-text">• ThreadPoolConfigEntity</text>
+  <text x="450" y="240" text-anchor="start" class="component-text">• 线程池管理与监控</text>
+  
+  <!-- 注册中心层 -->
+  <rect x="420" y="260" width="150" height="80" class="component-bg" rx="5"/>
+  <text x="495" y="280" text-anchor="middle" class="component-title">注册中心</text>
+  <text x="495" y="295" text-anchor="middle" class="component-text">IRegistry</text>
+  <text x="495" y="310" text-anchor="middle" class="component-text">RedisRegistry</text>
+  <text x="495" y="325" text-anchor="middle" class="component-text">数据上报</text>
+  
+  <!-- 触发器层 -->
+  <rect x="580" y="260" width="150" height="80" class="component-bg" rx="5"/>
+  <text x="655" y="280" text-anchor="middle" class="component-title">触发器</text>
+  <text x="655" y="295" text-anchor="middle" class="component-text">定时任务</text>
+  <text x="655" y="310" text-anchor="middle" class="component-text">配置监听</text>
+  <text x="655" y="325" text-anchor="middle" class="component-text">Redis Topic</text>
+  
+  <!-- 测试应用层 -->
+  <rect x="800" y="60" width="300" height="180" class="layer-bg test-bg" rx="10"/>
+  <text x="950" y="85" text-anchor="middle" class="layer-title">测试应用 (Test App)</text>
+  
+  <!-- 线程池配置 -->
+  <rect x="820" y="100" width="120" height="60" class="component-bg" rx="5"/>
+  <text x="880" y="120" text-anchor="middle" class="component-title">线程池配置</text>
+  <text x="880" y="135" text-anchor="middle" class="component-text">ThreadPoolConfig</text>
+  <text x="880" y="150" text-anchor="middle" class="component-text">多个线程池</text>
+  
+  <!-- 业务应用 -->
+  <rect x="960" y="100" width="120" height="60" class="component-bg" rx="5"/>
+  <text x="1020" y="120" text-anchor="middle" class="component-title">业务应用</text>
+  <text x="1020" y="135" text-anchor="middle" class="component-text">Application</text>
+  <text x="1020" y="150" text-anchor="middle" class="component-text">线程池使用</text>
+  
+  <!-- 配置文件 -->
+  <rect x="820" y="170" width="260" height="50" class="component-bg" rx="5"/>
+  <text x="950" y="190" text-anchor="middle" class="component-title">配置文件</text>
+  <text x="950" y="205" text-anchor="middle" class="component-text">application.yml / 动态配置</text>
+  
+  <!-- Redis存储层 -->
+  <rect x="400" y="400" width="400" height="120" class="layer-bg redis-bg" rx="10"/>
+  <text x="600" y="425" text-anchor="middle" class="layer-title">Redis 存储层</text>
+  
+  <!-- 配置存储 -->
+  <rect x="420" y="440" width="120" height="60" class="component-bg" rx="5"/>
+  <text x="480" y="460" text-anchor="middle" class="component-title">配置存储</text>
+  <text x="480" y="475" text-anchor="middle" class="component-text">线程池配置</text>
+  <text x="480" y="490" text-anchor="middle" class="component-text">参数缓存</text>
+  
+  <!-- 消息队列 -->
+  <rect x="560" y="440" width="120" height="60" class="component-bg" rx="5"/>
+  <text x="620" y="460" text-anchor="middle" class="component-title">消息队列</text>
+  <text x="620" y="475" text-anchor="middle" class="component-text">Redis Topic</text>
+  <text x="620" y="490" text-anchor="middle" class="component-text">配置变更通知</text>
+  
+  <!-- 监控数据 -->
+  <rect x="700" y="440" width="120" height="60" class="component-bg" rx="5"/>
+  <text x="760" y="460" text-anchor="middle" class="component-title">监控数据</text>
+  <text x="760" y="475" text-anchor="middle" class="component-text">运行状态</text>
+  <text x="760" y="490" text-anchor="middle" class="component-text">性能指标</text>
+  
+  <!-- 数据流向箭头 -->
+  <!-- 管理后台到Redis -->
+  <line x1="200" y1="240" x2="480" y2="440" class="arrow"/>
+  <text x="300" y="320" class="component-text">配置下发</text>
+  
+  <!-- Redis到Starter -->
+  <line x1="600" y1="400" x2="575" y2="360" class="arrow"/>
+  <text x="580" y="380" class="component-text">配置同步</text>
+  
+  <!-- Starter到Test App -->
+  <line x1="750" y1="200" x2="800" y2="200" class="arrow"/>
+  <text x="770" y="190" class="component-text">自动装配</text>
+  
+  <!-- 数据上报流 -->
+  <line x1="950" y1="240" x2="760" y2="440" class="data-flow"/>
+  <text x="850" y="350" class="component-text">数据上报</text>
+  
+  <!-- 配置变更流 -->
+  <line x1="620" y1="440" x2="655" y2="340" class="data-flow"/>
+  <text x="630" y="390" class="component-text">配置变更</text>
+  
+  <!-- 分层说明 -->
+  <rect x="50" y="550" width="1100" height="200" class="layer-bg" rx="10"/>
+  <text x="600" y="575" text-anchor="middle" class="layer-title">架构分层说明</text>
+  
+  <text x="70" y="600" class="component-title">1. 表现层 (Presentation Layer)</text>
+  <text x="90" y="620" class="component-text">• Web管理界面：提供线程池监控和配置管理的用户界面</text>
+  <text x="90" y="635" class="component-text">• REST API：提供HTTP接口供外部系统调用</text>
+  
+  <text x="70" y="660" class="component-title">2. 业务层 (Business Layer)</text>
+  <text x="90" y="680" class="component-text">• 动态线程池服务：核心业务逻辑，负责线程池的创建、配置和监控</text>
+  <text x="90" y="695" class="component-text">• 配置管理：处理线程池配置的读取、更新和验证</text>
+  
+  <text x="600" y="600" class="component-title">3. 基础设施层 (Infrastructure Layer)</text>
+  <text x="620" y="620" class="component-text">• Redis注册中心：负责配置存储和消息通信</text>
+  <text x="620" y="635" class="component-text">• 定时任务：定期上报线程池状态和性能数据</text>
+  
+  <text x="600" y="660" class="component-title">4. 应用层 (Application Layer)</text>
+  <text x="620" y="680" class="component-text">• Spring Boot自动配置：实现无侵入式集成</text>
+  <text x="620" y="695" class="component-text">• 测试应用：演示动态线程池的使用方式</text>
+</svg>
